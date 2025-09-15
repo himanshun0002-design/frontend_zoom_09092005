@@ -1,0 +1,7 @@
+services:
+  - type: web
+    name: zoom-clone-frontend
+    env: static
+    buildCommand: "npm install && npm run build"
+    staticPublishPath: "build"
+    autoDeploy: true

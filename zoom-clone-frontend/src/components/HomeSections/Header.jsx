@@ -1,0 +1,42 @@
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
+
+
+function Header({ navigate }) {
+    const { username } = useContext(AuthContext);
+
+    return (
+        <header>
+            <div className="logo">
+                <i className="fas fa-video"></i>
+                <h1>MeetEasy</h1>
+            </div>
+
+            <div className="nav-links">
+                <Link to="/">Home</Link>
+                <a href="#features">Features</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </div>
+
+            <div className="auth-buttons">
+                {username ? (
+                    <span className="username-display">Logged in as: {username}</span>
+                ) : (
+                    <>
+                        <button className="btn btn-outline" onClick={() => navigate('/login')}>
+                            Sign In
+                        </button>
+                        <button className="btn btn-primary" onClick={() => navigate('/signup')}>
+                            Sign Up
+                        </button>
+                    </>
+                )}
+            </div>
+        </header>
+    );
+}
+
+export default Header;
